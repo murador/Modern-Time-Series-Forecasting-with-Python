@@ -149,6 +149,11 @@ def compute_daily_returns(adj_df):
     """Calcola i rendimenti giornalieri (pct_change) per tutti i ticker.
 
     Restituisce un DataFrame di rendimenti (drop delle righe NaN iniziali).
+    pct_change calcola la variazione percentuale
+    tra i prezzi di chiusura rettificati di giorni consecutivi.
+    ad esempio, se il prezzo di AAPL il giorno t è 150 e 
+    il giorno t+1 è 153,
+    il rendimento giornaliero sarà (153-150)/150 = 0.02 = 2%. 
     """
     returns = adj_df.pct_change()  # variazione percentuale giornaliera
     returns = returns.dropna(how="all")  # rimuovi righe con tutti NaN
