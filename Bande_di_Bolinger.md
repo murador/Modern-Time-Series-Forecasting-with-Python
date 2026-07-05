@@ -1,7 +1,3 @@
-Per essere del tutto trasparente con te (essendo un'intelligenza artificiale), la dashboard interattiva che è apparsa nella chat non è stata generata eseguendo direttamente del codice Python in background, ma inviando una specifica formattata a un sistema interno dell'interfaccia utente che ha renderizzato il componente visivo sul momento.
-
-Tuttavia, **se vuoi ricreare esattamente la stessa dashboard interattiva sul tuo computer**, lo standard nell'industria dell'analisi dati in Python è usare la libreria **Streamlit** combinata con **Plotly**.
-
 Ecco il codice Python completo e commentato che crea la medesima simulazione (con i cursori per modificare i parametri in tempo reale):
 
 ### Codice Python per la Dashboard (Streamlit)
@@ -120,3 +116,90 @@ streamlit run app.py
 
 
 3. Si aprirà automaticamente una nuova scheda nel tuo browser (solitamente all'indirizzo `http://localhost:8501`) con la dashboard perfettamente funzionante. Potrai muovere i cursori a sinistra e vedere il grafico ricalcolare istantaneamente le equazioni di cui abbiamo parlato.
+
+Ottima idea! Usare un ambiente virtuale (Virtual Environment o `venv`) è la *best practice* assoluta in Python. Ti permette di creare una "bolla" isolata per ogni progetto, evitando che le versioni delle librerie vadano in conflitto con altri programmi sul tuo computer.
+
+Ecco la guida passo-passo per preparare il tuo ambiente isolato e far girare la dashboard in totale pulizia.
+
+### 1. Crea la cartella del progetto
+
+Per prima cosa, apri il terminale (Prompt dei Comandi o PowerShell su Windows, Terminale su macOS/Linux) e crea una cartella dedicata al tuo progetto, per poi entrarci.
+
+```bash
+mkdir dashboard_finanza
+cd dashboard_finanza
+
+```
+
+*Assicurati di salvare il file `app.py` contenente il codice all'interno di questa nuova cartella.*
+
+---
+
+### 2. Crea l'ambiente virtuale
+
+Una volta dentro la cartella del progetto, chiedi a Python di generare un nuovo ambiente virtuale. Per convenzione, la cartella che lo conterrà viene chiamata a sua volta `venv` o `env`.
+
+```bash
+python -m venv venv
+
+```
+
+*Nota: Se usi macOS o Linux e il sistema non riconosce `python`, usa `python3 -m venv venv`.*
+
+---
+
+### 3. Attiva l'ambiente virtuale
+
+L'ambiente è stato creato, ma ora devi "entrarci". Il comando per attivarlo cambia in base al tuo sistema operativo:
+
+* **Su Windows:**
+```cmd
+venv\Scripts\activate
+
+```
+
+
+* **Su macOS e Linux:**
+```bash
+source venv/bin/activate
+
+```
+
+
+
+> **Come capire se ha funzionato?** Saprai di essere dentro l'ambiente isolato perché all'inizio della riga del tuo terminale comparirà il nome dell'ambiente tra parentesi, in questo modo: `(venv) utente@computer:~/dashboard_finanza$`.
+
+---
+
+### 4. Installa le librerie nella bolla
+
+Ora che l'ambiente è attivo, puoi scaricare le dipendenze. Tutto ciò che installi ora rimarrà rigorosamente confinato all'interno della cartella `venv`, lasciando immacolato il tuo Python di sistema.
+
+```bash
+pip install streamlit pandas numpy plotly
+
+```
+
+---
+
+### 5. Avvia la Dashboard
+
+Terminata l'installazione, puoi lanciare l'applicazione esattamente come faresti di solito:
+
+```bash
+streamlit run app.py
+
+```
+
+---
+
+### 6. Esci dall'ambiente virtuale (Deactivate)
+
+Quando hai finito di utilizzare l'applicazione e chiudi il server di Streamlit (premendo `Ctrl+C` nel terminale), puoi disattivare l'ambiente virtuale e tornare alla normale configurazione del tuo computer digitando semplicemente:
+
+```bash
+deactivate
+
+```
+
+La scritta `(venv)` scomparirà dal terminale. La prossima volta che vorrai riaprire il progetto, non dovrai reinstallare nulla: ti basterà ripetere il **Passaggio 3** per attivare l'ambiente e il **Passaggio 5** per avviare la dashboard!
