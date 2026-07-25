@@ -141,6 +141,10 @@ data/
 #Exclude imgs folder
 imgs/
 
+# Ignore Kaggle API credentials
+api_keys/
+**/kaggle.json
+
 test.py
 .pt_tmp/
 notebooks/Chapter13/ft_transformer_global/

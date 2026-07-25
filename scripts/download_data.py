@@ -7,8 +7,13 @@ import logging
 logger = logging.getLogger(__name__)
 # logger = get_logger(__name__)
 
+'''
+Questo script scarica i dataset da Kaggle e Monash Forecasting Repository.
+Prima di avviare lo script, assicurati di avere un file kaggle.json nella cartella api_keys con le tue credenziali Kaggle, oppure di avere impostato le variabili d'ambiente KAGGLE_USERNAME e KAGGLE_KEY.
+'''
+
 DATA_PATH = Path("data")
-KAGGLE_JSON = Path("api_keys/kaggle.json")
+KAGGLE_JSON = Path("\\Modern-Time-Series-Forecasting-with-Python\\scripts\\api_keys\\kaggle.json")
 IS_KAGGLE_KEY = KAGGLE_JSON.exists()
 KAGGLE_API = None
 
